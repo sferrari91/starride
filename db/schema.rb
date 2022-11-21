@@ -1,4 +1,4 @@
-go# This file is auto-generated from the current state of the database. Instead
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,9 +10,32 @@ go# This file is auto-generated from the current state of the database. Instead
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_143657) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_152001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id", null: false
+    t.bigint "spaceship_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spaceship_id"], name: "index_bookings_on_spaceship_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "spaceships", force: :cascade do |t|
+    t.string "name"
+    t.string "planet"
+    t.text "description"
+    t.decimal "price_per_day"
+    t.integer "number_of_passenger"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_spaceships_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_143657) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "spaceships"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "spaceships", "users"
 end

@@ -5,8 +5,8 @@ class CreateSpaceships < ActiveRecord::Migration[7.0]
       t.string :planet
       t.text :description
       t.decimal :price_per_day
-      t.integer :number_of_passanger
-      t.references :user_id, null: false, foreign_key: true
+      t.integer :number_of_passenger
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

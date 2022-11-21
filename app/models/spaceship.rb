@@ -1,5 +1,5 @@
 class Spaceship < ApplicationRecord
-  belongs_to :user_id
+  belongs_to :user
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :planet, presence: true
