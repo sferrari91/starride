@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:user])
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     @booking.spaceship = @spaceship
     @booking.user = current_user
     if @booking.save
-      redirect_to spaceship_path(@spaceship)
+      redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end

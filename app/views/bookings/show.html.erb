@@ -1,12 +1,10 @@
-<p><strong>Bookings</strong></p>
+<p><strong>New booking</strong></p>
 <ul class="list-group">
-  <% @user.bookings.each do |booking| %>
-    <li class="list-group-item">
-    <%= booking.start_date %></li>
-    <%= booking.end_date %></li>
-    <%= booking.user.email %></li>
-    <%= booking.spaceship.name %>
+  <li class="list-group-item">
+    <%= @booking.start_date %></li>
+    <%= @booking.end_date %></li>
+    <%= @booking.user.email %></li>
+    <%= @booking.spaceship.name %>
     </li>
-  <% end %>
 </ul>
 <br>
