@@ -5,4 +5,8 @@
 <p><%= @spaceship.description %> </p>
 <p><%= @spaceship.price_per_day %> </p>
 <p><%= @spaceship.number_of_passenger %> </p>
-<p><%= cl_image_tag @spaceship.photo.key, height: 300, width: 400, crop: :fill %> </p>
+<%if @spaceship.photo.attached? %>
+<p> <%= cl_image_tag @spaceship.photo.key, height: 300, width: 400, crop: :fill %> </p>
+<% else %>
+<p> potato </p>
+<% end %>
