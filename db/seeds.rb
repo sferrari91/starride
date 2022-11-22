@@ -1,3 +1,10 @@
+require 'faker'
+
+user = User.create!(
+  email: "potatos123456@gmail.com",
+  password: "1234567"
+)
+
 5.times do |i|
   spaceship = Spaceship.create!(
     name: Faker::TvShows::StarTrek.character,
