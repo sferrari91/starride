@@ -1,0 +1,8 @@
+<h1>THE "SHOW" PAGE</h1>
+
+<h2><%= @spaceship.name %> </h2>
+<p><%= @spaceship.planet %> </p>
+<p><%= @spaceship.description %> </p>
+<p><%= @spaceship.price_per_day %> </p>
+<p><%= @spaceship.number_of_passenger %> </p>
+<p><%= cl_image_tag @spaceship.photo.key, height: 300, width: 400, crop: :fill %> </p>
