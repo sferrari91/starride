@@ -5,4 +5,22 @@
   </div>
 </div>
 
-<H2>HERE THE BOOKING DIV WILL BE SHOWN</H2>
+<h4 class="text-center">In which planet is your spaceship based?</h4>
+
+<div class="container text-center">
+  <%= link_to "Bogano", spaceships_path(planet: "Bogano"), class:"btn btn-success btn-circle btn-xl" %>
+  <%= link_to "Christophsis", spaceships_path(planet: "Christophsis"), class:"btn btn-secondary btn-circle btn-xl" %>
+  <%= link_to "Florrum", spaceships_path(planet: "Florrum"), class:"btn btn-primary btn-circle btn-xl" %>
+  <%= link_to "Florrum", spaceships_path(planet: "Florrum"), class:"btn btn-warning btn-circle btn-xl" %>
+  <%= link_to "Earth", spaceships_path(planet: "Earth"), class:"btn btn-dark btn-circle btn-xl" %>
+</div>
+
+
+<div class="text-center">
+  <h1>Some of our Spaceships</h1>
+  <ul>
+    <% @spaceships.each do |spaceship| %>
+      <li><%= spaceship.name %></li>
+    <% end %>
+</ul>
+</div>

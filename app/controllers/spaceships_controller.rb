@@ -1,6 +1,10 @@
 class SpaceshipsController < ApplicationController
   def index
-    @spaceships = Spaceship.all
+    if params[:planet].present?
+      @spaceships = Spaceship.where(planet: params[:planet])
+    else
+      @spaceships = Spaceship.all
+    end
   end
 
   def show
