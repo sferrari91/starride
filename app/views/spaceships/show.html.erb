@@ -1,12 +1,29 @@
-<h1>THE "SHOW" PAGE</h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/f0/9c/8b/f09c8bf496ed81ec4e92a4bddd60ae38.jpg)">
+  <%= @spaceship.name  %>
+</div>
 
-<h2><%= @spaceship.name %> </h2>
-<p><%= @spaceship.planet %> </p>
-<p><%= @spaceship.description %> </p>
-<p><%= @spaceship.price_per_day %> </p>
-<p><%= @spaceship.number_of_passenger %> </p>
-<%if @spaceship.photo.attached? %>
-<p> <%= cl_image_tag @spaceship.photo.key, height: 300, width: 400, crop: :fill %> </p>
-<% else %>
-<p> potato </p>
-<% end %>
+<div class="row">
+
+<div class="banana col-8 p-4">
+  <div class="inner-banana">
+    <h3>Information about this spaceship</h3>
+
+    <p>Available on planet: <%= @spaceship.planet %> </p>
+    <p>Description <%= @spaceship.description %> </p>
+    <p>Capacity:<%= @spaceship.number_of_passenger %> </p>
+    <%if @spaceship.photo.attached? %>
+    <p> <%= cl_image_tag @spaceship.photo.key, height: 300, width: 400, crop: :fill %> </p>
+    <% else %>
+    <p> potato </p>
+    <% end %>
+  </div>
+  <div class="inner-banana">
+    <p>Price per day: $<%= @spaceship.price_per_day %></p>
+  </div>
+</div>
+
+<div class="apple col-4 p-4">
+  <h3>Book this spaceship</h3>
+  <p>Here goes the form</p>
+</div>
+</div>
