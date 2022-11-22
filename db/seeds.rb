@@ -1,7 +1,3 @@
-@gmail.com",
-  password: "123456"
-)
-
 5.times do |i|
   spaceship = Spaceship.create!(
     name: Faker::TvShows::StarTrek.character,
