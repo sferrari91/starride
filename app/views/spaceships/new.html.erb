@@ -1,0 +1,18 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Create a new spaceship !</h3>
+        <%= simple_form_for @spaceship do |f| %>
+          <%= f.input :name, placeholder: 'Deathstar' %>
+          <%= f.input :planet, :collection => %w[Bogano Christophsis Florrum Nur Earth], placeholder: 'Choose the planet where your spaceship is based on!' %>
+          <%= f.input :description, placeholder: 'Describe your vehicle' %>
+          <%= f.input :price_per_day, placeholder: 'How much would you charge for a day ?' %>
+          <%= f.input :number_of_passenger, placeholder: 'From 2 to 300 people' %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
