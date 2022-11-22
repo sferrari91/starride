@@ -2,7 +2,7 @@ require 'faker'
 
 user = User.create!(
   email: "potatos123456@gmail.com",
-  password: "123456"
+  password: "1234567"
 )
 
 5.times do |i|
