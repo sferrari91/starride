@@ -31,11 +31,20 @@
   font-size: 15px;
   text-align: center;
 }
+.planetcard{
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
 
-.planetclass {
-  border-radius: 100%;
-  width: 400px;
-  height: 400px;
-  background-size: cover;
-  display: block;
+.planetcard a{
+color: white !important;
+text-decoration: none;
+position:absolute;
+width: 100%;
+text-align: center;
+left: 0;
+top: 50%;
+font-size: 24px;
+font-weight: bold;
 }
