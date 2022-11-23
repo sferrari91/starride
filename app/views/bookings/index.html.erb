@@ -1,12 +1,29 @@
-<p><strong>Bookings</strong></p>
-<ul class="list-group">
-  <% current_user.bookings.each do |booking| %>
-    <li class="list-group-item">
-    <%= booking.start_date %></li>
-    <%= booking.end_date %></li>
-    <%= booking.user.email %></li>
-    <%= booking.spaceship.name %>
+
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/481229372/photo/spiral-galaxy-illustration-of-milky-way.jpg?s=612x612&w=0&k=20&c=O-OKRJWM_XhGv48z6OhOj_tKBwEaDsvhYKguEN1yuJM=)">
+  Bookings
+</div>
+<div class="card-group">
+<% current_user.bookings.each do |booking| %>
+  <div class="card-trip">
+        <img src="https://wallpaperaccess.com/full/1224372.jpg" class="card-img-top"
+          alt="example card" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>
+          <%= booking.spaceship.name %>
+        </h2>
+        <p>
+          <%= booking.start_date %></li>
+          <%= booking.end_date %></li>
+        </p>
+      </div>
+      <h2 class="card-trip-pricing">
+      <p> Price! </p>
+      <%= booking.spaceship.price_per_day %>
+      </h2>
+    </div>
+  </div>
     </li>
   <% end %>
-</ul>
+</div>
 <br>
