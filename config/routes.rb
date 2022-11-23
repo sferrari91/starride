@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :spaceships do
     resources :bookings
   end
-  resources :bookings
+  resources :bookings, only: %i[index]
 end
