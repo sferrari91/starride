@@ -5,7 +5,7 @@
         <h3>Create a new spaceship !</h3>
         <%= simple_form_for @spaceship do |f| %>
           <%= f.input :name, placeholder: 'Deathstar' %>
-          <%= f.input :planet, :collection => %w[Bogano Christophsis Florrum Nur Earth], placeholder: 'Choose the planet where your spaceship is based on!' %>
+          <%= f.input :planet, :collection => %w[Tatooine Krypton Vulcan Dagobah Earth], placeholder: 'Choose the planet where your spaceship is based on!' %>
           <%= f.input :description, placeholder: 'Describe your vehicle' %>
           <%= f.input :price_per_day, placeholder: 'How much would you charge for a day ? (in Galactic Credit Standard)' %>
           <%= f.input :number_of_passenger, placeholder: 'From 2 to 300 people' %>
