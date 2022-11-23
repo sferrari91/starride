@@ -22,8 +22,13 @@
   </div>
 </div>
 
-<div class="apple col-4 p-4">
-  <h3>Book this spaceship</h3>
-  <p>Here goes the form</p>
-</div>
+  <div class="apple col-4 p-4">
+    <h3>Book this spaceship !</h3>
+    <h4> Please book your date </h4>
+    <%= simple_form_for [@spaceship, @booking] do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.submit class: 'btn btn-flat' %>
+    <% end %>
+  </div>
 </div>
