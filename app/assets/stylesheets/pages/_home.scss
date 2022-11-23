@@ -1,5 +1,7 @@
 // Specific CSS for your home-page
 
+
+
 .banner {
   background-size: cover;
   background-position: center;
@@ -9,11 +11,14 @@
 .banner h1 {
   margin: 0;
   color: white;
+  font-family: 'Stacker';
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 50px;
   font-weight: bold;
   text-align: center;
 }
+
+
 
 .banner p {
   font-size: 30px;
@@ -31,11 +36,47 @@
   font-size: 15px;
   text-align: center;
 }
+.planetcard{
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
 
-.planetclass {
-  border-radius: 100%;
-  width: 400px;
-  height: 400px;
-  background-size: cover;
-  display: block;
+.planetcard:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.planetcard a{
+color: white !important;
+text-decoration: none;
+position:absolute;
+width: 100%;
+text-align: center;
+left: 0;
+top: 50%;
+font-size: 24px;
+font-weight: bold;
+}
+
+.mycard {
+  width: 30%;
+}
+
+h4 {
+  font-family: 'Agelast';
+  color: white;
+}
+
+h2 {
+  font-family: 'Agelast';
+  color: white;
+}
+
+.background{
+  background-image: url("https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1505506874110-6a7a69069a08%3Fixlib%3Drb-4.0.3%26ixid%3DMnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8%26auto%3Dformat%26fit%3Dcrop%26w%3D687%26q%3D80https://images.unsplash.com/photo-1498590880827-3f79fdcd7fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
+}
+
+h5 a {
+  text-decoration: none;
 }

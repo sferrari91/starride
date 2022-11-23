@@ -19,12 +19,14 @@
   gap: 16px;
 }
 
-.apple {
-}
 
 .inner-banana {
   background-color: white;
   padding: 16px;
   border-radius: 16px;
   border: #cccccc 2px solid;
+}
+
+.unstyled-link {
+  text-decoration: none;
 }
