@@ -1,9 +1,23 @@
-<div class="text-center">
-<h1>ALL OUR SPACESHIPS</h1>
+<% if params[:planet] %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/f0/9c/8b/f09c8bf496ed81ec4e92a4bddd60ae38.jpg)">
+    <%= params[:planet].upcase %> SPACESHIPS AVAILABLE
+  </div>
+<% else %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/f0/9c/8b/f09c8bf496ed81ec4e92a4bddd60ae38.jpg)">
+    ALL YOUR SPACESHIPS AVAILABLE
+  </div>
+<% end %>
 
+<br>
+<div class="text-center">
+<div class="btn btn-success navbar-text btn-large">
+  <%= link_to 'ADD YOUR SPACESHIPS !', new_spaceship_path %>
+</div>
+<br>
+<br>
 <ul>
   <% @spaceships.each do |spaceship| %>
-    <li><%= link_to spaceship.name, spaceship %></li>
+    <li><%= link_to spaceship.name, spaceship, class:"unstyled-link" %></li>
   <% end %>
-</ul>
+<% end %>
 </div>
