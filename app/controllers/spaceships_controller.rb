@@ -1,9 +1,11 @@
 class SpaceshipsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
-  before_action :set_booking, only: %i[new create]
+  # before_action :set_booking, only: %i[new create]
 
   def index
-    if params[:planet].present?
+    if params[:planet] == "My"
+      @spaceships = current_user.spaceships
+    elsif params[:planet].present?
       @spaceships = Spaceship.where(planet: params[:planet])
     else
       @spaceships = Spaceship.all
@@ -34,5 +36,4 @@ class SpaceshipsController < ApplicationController
   def spaceship_params
     params.require(:spaceship).permit(:name, :photo, :description, :number_of_passenger, :price_per_day, :planet)
   end
-
 end
