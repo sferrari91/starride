@@ -11,7 +11,7 @@
 
 <div class="container justify-content-center gap-3 row mx-auto">
     <% @spaceships.each do |spaceship| %>
-      <% if spaceship.photo.exist? %>
+      <% if spaceship.photo.attached? %>
         <div class="spaceshipcard col-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path spaceship.photo.key, height: 300, crop: :fill %>')">
           <%= link_to spaceship.name, spaceship_path(spaceship) %>
         </div>
