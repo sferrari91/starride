@@ -1,4 +1,6 @@
 class SpaceshipsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index]
+
   def index
     if params[:planet].present?
       @spaceships = Spaceship.where(planet: params[:planet])
