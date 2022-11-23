@@ -1,5 +1,7 @@
 // Specific CSS for your home-page
 
+
+
 .banner {
   background-size: cover;
   background-position: center;
@@ -9,11 +11,14 @@
 .banner h1 {
   margin: 0;
   color: white;
+  font-family: 'Stacker';
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 50px;
   font-weight: bold;
   text-align: center;
 }
+
+
 
 .banner p {
   font-size: 30px;
@@ -33,8 +38,13 @@
 }
 .planetcard{
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.planetcard:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
 .planetcard a{
@@ -47,4 +57,16 @@ left: 0;
 top: 50%;
 font-size: 24px;
 font-weight: bold;
+}
+
+.mycard {
+  width: 30%;
+}
+
+h4 {
+  font-family: 'Agelast';
+}
+
+h2 {
+  font-family: 'Agelast';
 }
