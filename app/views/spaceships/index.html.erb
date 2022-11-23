@@ -1,9 +1,25 @@
 <div class="text-center">
-<h1>ALL OUR SPACESHIPS</h1>
 
-<ul>
-  <% @spaceships.each do |spaceship| %>
+<%= link_to("Create your own spaceship", new_spaceship_path) %>
+
+<% if user_signed_in?%>
+<h1>ALL YOUR SPACESHIPS</h1>
+  <ul class="list-spaceship">
+    <% current_user.spaceships.each do |spaceship| %>
+      <li class="spaceship-card">
+      <%= spaceship.name %></li>
+      <%= spaceship.planet %></li>
+      <%= spaceship.description %></li>
+      <%= spaceship.price_per_day %></li>
+      <%= spaceship.number_of_passenger %>
+      </li>
+    <% end %>
+</ul>
+
+<% else %>
+<h1>ALL OUR SPACESHIPS</h1>
+  <%= @spaceships.each do |spaceship| %>
     <li><%= link_to spaceship.name, spaceship %></li>
   <% end %>
-</ul>
+<% end %>
 </div>
