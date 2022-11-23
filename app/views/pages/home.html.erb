@@ -1,57 +1,57 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://d3ezn0y6hdgq62.cloudfront.net/NS-18-AudreyPowers.jpeg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/13/6c/4d/136c4df7a73276c9e2fb088fee3c4972.jpg);">
   <div class="container">
     <h1><strong>starRide</strong></h1>
     <p>giving you <strong>space</strong></p>
   </div>
 </div>
+<div class="background">
 <br>
-<h2 class="text-center">On which planet is your spaceship based?</h2>
-<div class="d-flex justify-content-between">
-  <div class="planetcard">
-    <%= image_tag('seed/planet_1.png', style: "height: 250px; width: 250px") %>
-    <%= link_to "Bogano", spaceships_path(planet: "Bogano") %>
-  </div>
-  <div class="planetcard">
-    <%= image_tag('seed/planet_2.png', style: "height: 250px; width: 250px") %>
-    <%= link_to "Christophsis", spaceships_path(planet: "Christophsis") %>
-  </div>
-  <div class="planetcard">
-    <%= image_tag('seed/planet_2.png', style: "height: 250px; width: 250px") %>
-    <%= link_to "Florrum", spaceships_path(planet: "Florrum") %>
-  </div>
+
+  <h2 class="text-center">On which planet is your spaceship based</h2>
+  <div class="d-flex justify-content-between">
     <div class="planetcard">
-    <%= image_tag('seed/planet_2.png', style: "height: 250px; width: 250px") %>
-    <%= link_to "Earth", spaceships_path(planet: "Earth") %>
+      <%= image_tag('seed/planet_1.png', style: "height: 250px; width: 250px") %>
+      <%= link_to "Vulcan", spaceships_path(planet: "Vulcan") %>
+    </div>
+    <div class="planetcard">
+      <%= image_tag('seed/planet_2.png', style: "height: 250px; width: 250px") %>
+      <%= link_to "Tatooine", spaceships_path(planet: "Tatooine") %>
+    </div>
+    <div class="planetcard">
+      <%= image_tag('seed/planet_3.png', style: "height: 250px; width: 250px") %>
+      <%= link_to "Krypton", spaceships_path(planet: "Krypton") %>
+    </div>
+      <div class="planetcard">
+      <%= image_tag('seed/planet_4.png', style: "height: 250px; width: 250px") %>
+      <%= link_to "Dagobah", spaceships_path(planet: "Dagobah") %>
+    </div>
+    <div class="planetcard">
+      <%= image_tag('seed/planet_5.png', style: "height: 250px; width: 250px") %>
+      <%= link_to "Earth", spaceships_path(planet: "Earth") %>
+    </div>
   </div>
-  <div class="planetcard">
-    <%= image_tag('seed/planet_2.png', style: "height: 250px; width: 250px") %>
-    <%= link_to "Earth", spaceships_path(planet: "Earth") %>
-  </div>
-</div>
-<br>
-
-
-<h2 class="text-center">Take a look at some of our spaceships</h2>
-<br>
-<div class="container">
-  <div class="row g-4">
-  <% @spaceships.sample(4).each do |spaceship| %>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://wallpaperaccess.com/full/1224372.jpg" class="card-img-top"
-          alt="example card" />
-        <div class="card-body">
-          <h5 class="card-title"><%= spaceship.name %></h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.
-          </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+  <br>
+  <h2 class="text-center">Take a look at some of our spaceships</h2>
+  <br>
+  <div class="container">
+    <div class="row g-4">
+    <% @spaceships.sample(4).each do |spaceship| %>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://wallpaperaccess.com/full/1224372.jpg" class="card-img-top"
+            alt="example card" />
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to spaceship.name, spaceship_path(spaceship) %></h5>
+            <p class="card-text">
+              <%= spaceship.description %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Available on planet <%= spaceship.planet %></small>
+          </div>
         </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
   </div>
 </div>
