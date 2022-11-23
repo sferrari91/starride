@@ -7,16 +7,23 @@
     ALL THE SPACESHIPS AVAILABLE
   </div>
 <% end %>
-
 <br>
-<div class="text-center">
-<div class="btn btn-success navbar-text btn-large">
-  <%= link_to 'ADD YOUR SPACESHIPS !', new_spaceship_path %>
+
+<div class="container justify-content-center gap-3 row mx-auto">
+    <% @spaceships.each do |spaceship| %>
+      <% if spaceship.photo.exist? %>
+        <div class="spaceshipcard col-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path spaceship.photo.key, height: 300, crop: :fill %>')">
+          <%= link_to spaceship.name, spaceship_path(spaceship) %>
+        </div>
+      <%else %>
+        <div class="spaceshipcard col-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://wallpaperaccess.com/full/1224372.jpg)">
+          <%= link_to spaceship.name, spaceship_path(spaceship) %>
+        </div>
+        <% end %>
+    <% end %>
 </div>
 <br>
-<br>
-<ul>
-  <% @spaceships.each do |spaceship| %>
-    <li><%= link_to spaceship.name, spaceship, class:"unstyled-link" %></li>
-  <% end %>
+
+<div class="container text-center">
+<button class="glow-on-hover" type="button"> <%= link_to 'Add a new spaceship', new_spaceship_path %></button>
 </div>
