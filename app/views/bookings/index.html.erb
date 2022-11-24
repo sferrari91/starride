@@ -4,7 +4,6 @@
 <div class="card-group">
   <% current_user.bookings.each do |booking| %>
     <div class="card-trip">
-
         <%= link_to spaceship_booking_path(booking.spaceship, booking)  do %>
             <img src="https://wallpaperaccess.com/full/1224372.jpg" />
         <% end %>
