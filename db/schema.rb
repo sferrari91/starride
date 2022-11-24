@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_142051) do
     t.bigint "spaceship_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["spaceship_id"], name: "index_bookings_on_spaceship_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
