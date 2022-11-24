@@ -25,8 +25,26 @@ class BookingsController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
+    @booking = Booking.find(params[:id])
+    @spaceship = @booking.spaceship
   end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @spaceship = @booking.spaceship
+    @booking.user = current_user
+    @booking.update(booking_params)
+    redirect_to bookings_path
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @spaceship = @booking.spaceship
+    @booking.destroy
+    redirect_to bookings_path, status: :see_other
+  end
+
 
   private
 

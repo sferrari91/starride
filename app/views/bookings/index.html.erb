@@ -4,6 +4,21 @@
 <div class="card-group">
   <% current_user.bookings.each do |booking| %>
     <div class="card-trip">
+
+       <% if booking.spaceship.photo.attached? %>
+        <%= image_tag booking.spaceship.photo, data: { toggle:"modal", target: "#bookingModal#{booking.id}" }  %>
+        <% else %>
+         <img src="https://wallpaperaccess.com/full/1224372.jpg" data-bs-toggle="modal" data-bs-target="#bookingModal<%= booking.id %>
+        <% end %>
+
+
+
+
+:data => { :target => "#imagemodal }
+
+
+
+
          <img src="https://wallpaperaccess.com/full/1224372.jpg" data-bs-toggle="modal" data-bs-target="#bookingModal<%= booking.id %>" />
     <div class="card-trip-infos">
       <div>
@@ -39,33 +54,25 @@
             <ul class="list-group">
               <li class="list-group-item">
                 <br>
+              <div class="pb-4">
               <p><strong>Start date</strong></p>
-                <%= booking.start_date.strftime("%A %e %m %Y") %>
-                <br>
-                <br>
+              <%= booking.start_date.strftime("%A %e %m %Y") %>
+              </div>
               <p><strong>Return date</strong></p>
-                <%= booking.end_date.strftime("%A %e %m %Y") %>
-                <br>
-                <br>
+              <%= booking.end_date.strftime("%A %e %m %Y") %>
               <p><strong>Renter</strong></p>
                 <%= booking.user.email %>
-                <br>
-                <br>
               <p><strong>Spaceship Rented</strong></p>
                 <%= booking.spaceship.name %>
-                <br>
-                <br>
             </ul>
             <br>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <%= link_to "Cancel booking", spaceships_path, class: "btn btn-danger" %>
+            <%= link_to "Cancel this booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+            <%= link_to "Edit booking", edit_booking_path(booking), class: "btn btn-primary" %>
           </div>
         </div>
       </div>
     </div>
-
   <% end %>
 </div>
