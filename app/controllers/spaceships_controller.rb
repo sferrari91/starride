@@ -3,9 +3,7 @@ class SpaceshipsController < ApplicationController
   # before_action :set_booking, only: %i[new create]
 
   def index
-    if params[:planet] == "My"
-      @spaceships = current_user.spaceships
-    elsif params[:planet].present?
+    if params[:planet].present?
       @spaceships = Spaceship.where(planet: params[:planet])
     else
       @spaceships = Spaceship.all
@@ -29,6 +27,22 @@ class SpaceshipsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @spaceship = Spaceship.find(params[:id])
+    @spaceship.destroy
+    redirect_to spaceships_path, status: :see_other
+  end
+
+  def edit
+    @spaceship = Spaceship.find(params[:id])
+  end
+
+  def update
+    @spaceship = Spaceship.find(params[:id])
+    @spaceship.update(spaceship_params)
+    redirect_to spaceship_path(@spaceship)
   end
 
   private
