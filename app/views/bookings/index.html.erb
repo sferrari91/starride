@@ -4,31 +4,68 @@
 <div class="card-group">
   <% current_user.bookings.each do |booking| %>
     <div class="card-trip">
-
-        <%= link_to spaceship_booking_path(booking.spaceship, booking)  do %>
-            <img src="https://wallpaperaccess.com/full/1224372.jpg" />
-        <% end %>
-
-      <div class="card-trip-infos">
+      <img src="https://wallpaperaccess.com/full/1224372.jpg" data-bs-toggle="modal" data-bs-target="#bookingModal<%= booking.id %>" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>
+          <%= booking.spaceship.name %>
+        </h2>
         <div>
-          <h2>
-            <%= booking.spaceship.name %>
-          </h2>
-          <div>
-            <p>
-              <%= booking.start_date.strftime("%A %e %m %Y") %>
-              <br>
-              <%= booking.end_date.strftime("%A %e %m %Y") %>
-            </p>
-          </div>
+          <p>
+            <%= booking.start_date.strftime("%A %e %m %Y") %>
+            <br>
+            <%= booking.end_date.strftime("%A %e %m %Y") %>
+          </p>
         </div>
-        <h2 class="card-trip-pricing">
-          <p> Price! </p>
-          <% start = booking.start_date %>
-          <% end_count = booking.end_date %>
-          <%= booking.spaceship.price_per_day * (end_count - start).to_i %>
+      </div>
+      <h2 class="card-trip-pricing">
+        <p> Price! </p>
+        <% start = booking.start_date %>
+        <% end_count = booking.end_date %>
+        <%= booking.spaceship.price_per_day * (end_count - start).to_i %>
         </h2>
       </div>
     </div>
+
+    <div class="modal fade" id="bookingModal<%= booking.id %>" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Your booking on the planet <%= booking.spaceship.planet %></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Details</strong></p>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <br>
+              <p><strong>Start date</strong></p>
+                <%= booking.start_date.strftime("%A %e %m %Y") %>
+                <br>
+                <br>
+              <p><strong>Return date</strong></p>
+                <%= booking.end_date.strftime("%A %e %m %Y") %>
+                <br>
+                <br>
+              <p><strong>Renter</strong></p>
+                <%= booking.user.email %>
+                <br>
+                <br>
+              <p><strong>Spaceship Rented</strong></p>
+                <%= booking.spaceship.name %>
+                <br>
+                <br>
+            </ul>
+            <br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <%= link_to "Cancel booking", spaceships_path, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <% end %>
 </div>
