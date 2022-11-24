@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_131939) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_142051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_131939) do
     t.string "name"
     t.string "planet"
     t.text "description"
-    t.decimal "price_per_day"
+    t.integer "price_per_day"
     t.integer "number_of_passenger"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

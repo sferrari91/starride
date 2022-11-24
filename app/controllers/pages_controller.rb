@@ -3,8 +3,12 @@ class PagesController < ApplicationController
 
   def home
     @spaceship = Spaceship.new
-    @spaceships = Spaceship.all
     @spaceship = Spaceship.where(params[:planet])
+    if params[:query].present?
+      @spaceships = Spaceship.search_by_name_and_planet(params[:query])
+    else
+      @spaceships = Spaceship.all
+    end
   end
 
 end
