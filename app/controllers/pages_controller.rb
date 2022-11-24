@@ -7,4 +7,7 @@ class PagesController < ApplicationController
     @spaceship = Spaceship.where(params[:planet])
   end
 
+  def dashboard
+    @spaceships = current_user.spaceships
+  end
 end
