@@ -5,6 +5,10 @@ class SpaceshipsController < ApplicationController
   def index
     if params[:planet].present?
       @spaceships = Spaceship.where(planet: params[:planet])
+    elsif params[:query].present?
+      @spaceships = Spaceship.search_by_name_and_planet(params[:query])
+    elsif params[:min_price].present?
+      @spaceships = Spaceship.where("price_per_day BETWEEN ? AND ?" , "#{params[:min_price].to_i}", "#{params[:max_price].to_i}")
     else
       @spaceships = Spaceship.all
     end

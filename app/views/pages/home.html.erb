@@ -5,8 +5,17 @@
   </div>
 </div>
 <div class="background">
+<h2 class="text-center">Type the name of the spaceship you're looking for</h2>
+<%= form_with url: spaceships_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a spacesip"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 <br>
-  <h2 class="text-center">On which planet is your spaceship based</h2>
+  <h2 class="text-center">Or select the planet the spaceship is based on</h2>
   <div class="d-flex justify-content-between">
     <div class="planetcard">
       <%= image_tag('seed/planet_1.png', style: "height: 250px; width: 250px") %>
@@ -44,6 +53,12 @@
             <p class="card-text">
               <%= spaceship.description %>
             </p>
+              <p class="card-text">
+              <p>Price per day:<%= spaceship.price_per_day %></p>
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Max. number of passengers: <%= spaceship.number_of_passenger %></small>
           </div>
           <div class="card-footer">
             <small class="text-muted">Available on planet <%= spaceship.planet %></small>
@@ -53,4 +68,10 @@
     <% end %>
     </div>
   </div>
+
+  <h2>Didn't find anything? See all our spaceships</h2>
+  <%= link_to "All spaceships", spaceships_path %>
+
+<%# APPLY FRONT END HERE %>
+
 </div>
