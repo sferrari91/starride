@@ -7,6 +7,7 @@
         <%= link_to spaceship_booking_path(booking.spaceship, booking)  do %>
             <img src="https://wallpaperaccess.com/full/1224372.jpg" />
         <% end %>
+
       <div class="card-trip-infos">
         <div>
           <h2>
@@ -22,7 +23,9 @@
         </div>
         <h2 class="card-trip-pricing">
           <p> Price! </p>
-          <%= booking.spaceship.price_per_day %>
+          <% start = booking.start_date %>
+          <% end_count = booking.end_date %>
+          <%= booking.spaceship.price_per_day * (end_count - start).to_i %>
         </h2>
       </div>
     </div>
