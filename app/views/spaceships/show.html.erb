@@ -24,7 +24,7 @@
 </div>
   <% if @spaceship.user == current_user %>
     <div class="container text-end">
-      <%= link_to 'Edit your spaceship', edit_spaceship_path(@spaceship), class: "glow-on-hover d-flex justify-content-center align-items-center", type: "button" do %>
+      <%= link_to edit_spaceship_path(@spaceship), class: "glow-on-hover d-flex justify-content-center align-items-center", type: "button" do %>
         <p>Edit your Spaceship !</p>
       <% end %>
     </div>
