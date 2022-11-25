@@ -1,48 +1,52 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/f0/9c/8b/f09c8bf496ed81ec4e92a4bddd60ae38.jpg)">
-  <%= @spaceship.name  %>
-</div>
-
-<div class="row">
-
-<div class="banana col-8 p-4">
-  <div class="inner-banana">
-    <h3>Information about this spaceship</h3>
-
-    <p>Available on planet: <%= @spaceship.planet %> </p>
-    <p>Description <%= @spaceship.description %> </p>
-    <p>Capacity:<%= @spaceship.number_of_passenger %> </p>
-    <%if @spaceship.photo.attached? %>
-      <p> <%= cl_image_tag @spaceship.photo.key, height: 300, width: 400, crop: :fill %> </p>
-    <% else %>
-      <p> potato </p>
-    <% end %>
-
+<div class=background>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/f0/9c/8b/f09c8bf496ed81ec4e92a4bddd60ae38.jpg)">
+    <%= @spaceship.name  %>
   </div>
-  <div class="inner-banana">
-    <p>Price per day: $<%= @spaceship.price_per_day %></p>
-  </div>
-</div>
-  <% if @spaceship.user == current_user %>
-    <div class="container text-end">
-      <%= link_to edit_spaceship_path(@spaceship), class: "glow-on-hover d-flex justify-content-center align-items-center", type: "button" do %>
-        <p>Edit your Spaceship !</p>
+
+  <div class="row">
+
+  <div class="banana col-8 p-4">
+    <div class="inner-banana">
+      <h3>Information about this spaceship</h3>
+
+      <p>Available on planet: <%= @spaceship.planet %> </p>
+      <p>Description <%= @spaceship.description %> </p>
+      <p>Capacity:<%= @spaceship.number_of_passenger %> </p>
+      <%if @spaceship.photo.attached? %>
+        <p> <%= cl_image_tag @spaceship.photo.key, height: 300, width: 400, crop: :fill %> </p>
+      <% else %>
+        <p> potato </p>
       <% end %>
+
     </div>
-    <div class="container text-end">
-        <%= link_to spaceship_path(@spaceship),
-            data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "glow-on-hover d-flex justify-content-center align-items-center", type: "button" do %>
-              <p>Delete your Spaceship !</p>
-        <% end %>
+    <div class="inner-banana">
+      <p>Price per day: $<%= @spaceship.price_per_day %></p>
     </div>
-  <% else %>
+  </div>
+    <% if @spaceship.user == current_user %>
     <div class="apple col-4 p-4">
-      <h3>Book this spaceship !</h3>
-        <h4> Please book your date </h4>
-          <%= simple_form_for [@spaceship, @booking] do |f| %>
-           <%= f.input :start_date %>
-           <%= f.input :end_date %>
-           <%= f.submit class: 'btn btn-flat' %>
+      <div class="container text-end button-space">
+        <%= link_to edit_spaceship_path(@spaceship), class: "glow-on-hover d-flex justify-content-center align-items-center", type: "button" do %>
+          <p>Edit your Spaceship</p>
+        <% end %>
+      </div>
+      <div class="container text-end button-space">
+          <%= link_to spaceship_path(@spaceship),
+              data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "glow-on-hover d-flex justify-content-center align-items-center", type: "button" do %>
+                <p>Delete your Spaceship</p>
           <% end %>
+      </div>
     </div>
-  <% end %>
+    <% else %>
+      <div class="apple col-4 p-4">
+        <h3>Book this spaceship !</h3>
+          <h4> Please book your date </h4>
+            <%= simple_form_for [@spaceship, @booking] do |f| %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.submit class: 'btn btn-flat' %>
+            <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
