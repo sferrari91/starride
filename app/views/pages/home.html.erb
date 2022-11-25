@@ -5,17 +5,8 @@
   </div>
 </div>
 <div class="background">
-<h2 class="text-center">Type the name of the spaceship you're looking for</h2>
-<%= form_with url: spaceships_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a spacesip"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
 <br>
-  <h2 class="text-center">Or select the planet the spaceship is based on</h2>
+  <h2 class="text-center">On which planet is your spaceship based</h2>
   <div class="d-flex justify-content-between">
     <%= link_to spaceships_path(planet: "Vulcan") do %>
         <div class="planetcard">
