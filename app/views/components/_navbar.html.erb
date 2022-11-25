@@ -6,11 +6,18 @@
     <%= link_to(root_path, class: "navbar-brand") do %>
       <%= image_tag "https://images.squarespace-cdn.com/content/v1/55d4e7b0e4b0e9be3d685134/1447356707115-UMUIJXPEBC4NZCIDG2W1/logo-2.png" %>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+    <p><span></span></p>
+    <%= form_with url: spaceships_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control rounded-pill",
+        placeholder: "Spaceschip's name"
+      %>
+      <%= submit_tag "Search", class: "btn glow-on-hover rounded-pill" %>
+      <% end %>
     <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
