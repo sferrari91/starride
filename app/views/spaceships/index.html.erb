@@ -36,7 +36,7 @@
       <%else %>
         <div class="spaceshipcard col-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://wallpaperaccess.com/full/1224372.jpg)">
           <%= link_to spaceship.name, spaceship_path(spaceship) %>
-          <p>Price per day:<%= (spaceship.price_per_day) %></p>
+          <p>Price per day: $ <%= number_with_delimiter(spaceship.price_per_day) %></p>
           <p>Capcity:<%= spaceship.number_of_passenger %></p>
         </div>
         <% end %>
