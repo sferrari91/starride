@@ -44,11 +44,12 @@
 }
 
 .planetcard:hover{
-  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  box-shadow: 0 0 11px rgba(255, 255, 255, 0.712);
+  border-radius: 50%;
 }
 
-.planetcard a{
-color: white !important;
+.planetcard p{
+color: rgb(245, 232, 198) !important;
 text-decoration: none;
 position:absolute;
 width: 100%;
@@ -80,3 +81,4 @@ h2 {
 h5 a {
   text-decoration: none;
 }
+
