@@ -72,12 +72,17 @@ h4 {
 h2 {
   font-family: 'Agelast';
   color: white;
+
 }
 
 .background{
   background-image: url("https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1505506874110-6a7a69069a08%3Fixlib%3Drb-4.0.3%26ixid%3DMnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8%26auto%3Dformat%26fit%3Dcrop%26w%3D687%26q%3D80https://images.unsplash.com/photo-1498590880827-3f79fdcd7fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
 }
 
-h5 a {
+.all a {
   text-decoration: none;
+  color:rgb(173, 223, 81);
+  font-family: 'Agelast';
+  font-weight: bold;
+  font-size: 28px;
 }

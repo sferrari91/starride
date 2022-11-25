@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.spaceship = @spaceship
     @booking.user = current_user
     if @booking.save
-      redirect_to bookings_path
+      redirect_to bookings_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
@@ -45,6 +45,19 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, status: :see_other
   end
 
+  def accept_booking
+    @booking = Booking.find(params[:id])
+    @booking.active!
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  def decline_booking
+    @booking = Booking.find(params[:id])
+    @booking.archived!
+    @booking.save
+    redirect_to dashboard_path
+  end
 
   private
 
@@ -57,7 +70,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :user, :spaceship)
+    params.require(:booking).permit(:start_date, :end_date, :user, :spaceship, :status)
   end
 
 end
