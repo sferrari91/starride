@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @spaceships = current_user.spaceships
+    @spaceships = Spaceship.where(user_id: current_user)
+    @bookings_pending = Booking.all.select { |booking| booking.status == "pending" }
   end
 end
