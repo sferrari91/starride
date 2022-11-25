@@ -7,42 +7,51 @@
     ALL THE SPACESHIPS AVAILABLE
   </div>
 <% end %>
-<br>
-<h3>Find a spaceship</h3>
-<%= form_with url: spaceships_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a spaceship per name or planet"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-<br>
-<%= form_with url: spaceships_path, method: :get do |form| %>
-  <%= number_field_tag :min_price, params[:min_price], placeholder: "Min price", value: 0 %>
-  <%= number_field_tag :max_price, params[:max_price], placeholder: "Max price" %>
-  <%= submit_tag "Search" %>
-<% end %>
-<br>
-<div class="container justify-content-center gap-3 row mx-auto">
-    <% @spaceships.each do |spaceship| %>
-      <% if spaceship.photo.attached? %>
-        <div class="spaceshipcard col-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path spaceship.photo.key, height: 300, crop: :fill %>')">
-          <%= link_to spaceship.name, spaceship_path(spaceship) %>
-          <p>Price per day:<%= (spaceship.price_per_day) %></p>
-          <br>
-          <p>Capacity:<%= spaceship.number_of_passenger %></p>
-        </div>
-      <%else %>
-        <div class="spaceshipcard col-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://wallpaperaccess.com/full/1224372.jpg)">
-          <%= link_to spaceship.name, spaceship_path(spaceship) %>
-          <p>Price per day: $ <%= number_with_delimiter(spaceship.price_per_day) %></p>
-          <p>Capcity:<%= spaceship.number_of_passenger %></p>
-        </div>
+<div class="background">
+  <div class="container m-4 jutify-content-center">
+    <h3 class="text-light">Filter per price</h3>
+    <div class="m-2">
+      <%= form_with url: spaceships_path, method: :get do |form| %>
+        <%= number_field_tag :min_price, params[:min_price], placeholder: "Min price", value: 0, class: "border-0 rounded-pill" %>
+        <%= number_field_tag :max_price, params[:max_price], placeholder: "Max price", class: "border-0 rounded-pill" %>
+        <button type="submit" class="button-search"><i class="fa-solid fa-magnifying-glass text-light"></i></button>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <br>
+
+<div class="card-group">
+<% @spaceships.each do |spaceship| %>
+  <%= link_to spaceship_path(spaceship) do %>
+    <div class="card-trip">
+        <% if spaceship.photo.attached? %>
+          <%= image_tag spaceship.photo %>
+        <% else %>
+          <img src="https://wallpaperaccess.com/full/1224372.jpg"/>
         <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2>
+          <%= spaceship.name %>
+        </h2>
+        <div>
+          <p>
+          Capacity of <%= spaceship.number_of_passenger %> people
+          </p>
+        </div>
+      </div>
+      <h2 class="card-trip-pricing">
+        <p> Price: </p>
+        <p>$ <%= spaceship.price_per_day %></p>
+        </h2>
+      </div>
+    </div>
     <% end %>
-</div>
-<br>
-<div class="container text-center">
-<button class="glow-on-hover" type="button"> <%= link_to 'Add a new spaceship', new_spaceship_path %></button>
+  <% end %>
+  </div>
+  <br>
+  <div class="container text-center">
+  <button class="glow-on-hover" type="button"> <%= link_to 'Add a new spaceship', new_spaceship_path %></button>
+  </div>
 </div>
