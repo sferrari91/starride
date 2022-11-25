@@ -4,7 +4,6 @@
 <div class="card-group">
   <% current_user.bookings.each do |booking| %>
     <div class="card-trip">
-
         <% if booking.spaceship.photo.attached? %>
           <%= image_tag booking.spaceship.photo, data: { bs_toggle:"modal", bs_target: "#bookingModal#{booking.id}" }  %>
         <% else %>
