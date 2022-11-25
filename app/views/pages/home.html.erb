@@ -58,7 +58,7 @@
               <%= spaceship.description %>
             </p>
               <p class="card-text">
-              <p>Price per day:<%= spaceship.price_per_day %></p>
+              <p>Price per day: $ <%= number_with_delimiter(spaceship.price_per_day) %></p>
             </p>
           </div>
           <div class="card-footer">
