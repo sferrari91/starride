@@ -46,9 +46,10 @@
     <div class="row g-4">
     <% @spaceships.sample(4).each do |spaceship| %>
       <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 img-size">
+      <%= link_to spaceship_path(spaceship) do %>
         <% if spaceship.photo.attached? %>
-          <%= image_tag spaceship.photo %>
+           <%= image_tag spaceship.photo %>
         <% else %>
           <img src="https://wallpaperaccess.com/full/1224372.jpg" class="card-img-top"
             alt="example card" />
@@ -59,7 +60,7 @@
               <%= spaceship.description %>
             </p>
               <p class="card-text">
-              <p>Price per day: $ <%= number_with_delimiter(spaceship.price_per_day) %></p>
+              <p>Price per day: $<%= number_with_delimiter(spaceship.price_per_day) %></p>
             </p>
           </div>
           <div class="card-footer">
@@ -69,6 +70,7 @@
             <small class="text-muted">Available on planet <%= spaceship.planet %></small>
           </div>
         </div>
+      <% end %>
       </div>
     <% end %>
     </div>
