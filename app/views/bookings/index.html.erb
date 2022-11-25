@@ -1,87 +1,89 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/f0/9c/8b/f09c8bf496ed81ec4e92a4bddd60ae38.jpg)">
   Bookings
 </div>
-<div class="card-group">
-  <% current_user.bookings.each do |booking| %>
-    <div class="card-trip">
-        <% if booking.spaceship.photo.attached? %>
-          <%= image_tag booking.spaceship.photo, data: { bs_toggle:"modal", bs_target: "#bookingModal#{booking.id}" }  %>
-        <% else %>
-          <img src="https://wallpaperaccess.com/full/1224372.jpg" data-bs-toggle="modal" data-bs-target="#bookingModal<%= booking.id %>"/>
-        <% end %>
-    <div class="card-trip-infos">
-      <div>
-        <h2>
-          <%= booking.spaceship.name %>
-        </h2>
+<div class="background">
+  <div class="card-group">
+    <% current_user.bookings.each do |booking| %>
+      <div class="card-trip">
+          <% if booking.spaceship.photo.attached? %>
+            <%= image_tag booking.spaceship.photo, data: { bs_toggle:"modal", bs_target: "#bookingModal#{booking.id}" }  %>
+          <% else %>
+            <img src="https://wallpaperaccess.com/full/1224372.jpg" data-bs-toggle="modal" data-bs-target="#bookingModal<%= booking.id %>"/>
+          <% end %>
+      <div class="card-trip-infos">
         <div>
-          <p>
-            <%= booking.start_date.strftime("%A %e %m %Y") %>
-            <br>
-            <%= booking.end_date.strftime("%A %e %m %Y") %>
-          </p>
-        </div>
-      </div>
-      <h2 class="card-trip-pricing">
-        <p> Price: </p>
-        <% start = booking.start_date %>
-        <% end_count = booking.end_date %>
-        <% total_price = booking.spaceship.price_per_day * (end_count - start).to_i %>
-        <p>$ <%= number_with_delimiter(total_price) %></p>
-        </h2>
-      </div>
-    </div>
-    <div class="modal fade" id="bookingModal<%= booking.id %>" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Your booking on the planet <%= booking.spaceship.planet %></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p><strong>Details</strong></p>
-            <ul class="list-group">
-              <li class="list-group-item">
-                <br>
-              <div class="pb-4">
-                <p><strong>Start date</strong></p>
-                <%= booking.start_date.strftime("%A %e %m %Y") %>
-              </div>
-              <div class="pb-4">
-                <p><strong>Return date</strong></p>
-                <%= booking.end_date.strftime("%A %e %m %Y") %>
-              </div>
-              <div class="pb-4">
-                <p><strong>Renter</strong></p>
-                <%= booking.user.email %>
-              </div>
-              <div class="pb-4">
-                <p><strong>Spaceship Rented</strong></p>
-                <%= booking.spaceship.name %>
-              </div>
-              <div class="pb-4">
-                <p><strong>Status</strong></p>
-                <% if booking.status == "pending" %>
-                  <p>Pending</p>
-                <% elsif booking.status == "archived" %>
-                  <p>Declined</p>
-                <% else %>
-                  <p>Accepted</p>
-                <% end %>
-              </div>
-              <div class="pb-4 text-center">
-                <p><strong>Total price</strong></p>
-                <p>$ <%= number_with_delimiter(total_price)%></p>
-              </div>
-            </ul>
-            <br>
-          </div>
-          <div class="modal-footer pb-4 justify-content-center">
-            <%= link_to "Edit booking", edit_booking_path(booking), class: "btn btn-primary rounded-pill" %>
-            <%= link_to "Cancel this booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger rounded-pill text-white" %>
+          <h2>
+            <%= booking.spaceship.name %>
+          </h2>
+          <div>
+            <p>
+              <%= booking.start_date.strftime("%A %e %m %Y") %>
+              <br>
+              <%= booking.end_date.strftime("%A %e %m %Y") %>
+            </p>
           </div>
         </div>
+        <h2 class="card-trip-pricing">
+          <p> Price: </p>
+          <% start = booking.start_date %>
+          <% end_count = booking.end_date %>
+          <% total_price = booking.spaceship.price_per_day * (end_count - start).to_i %>
+          <p>$ <%= number_with_delimiter(total_price) %></p>
+          </h2>
+        </div>
       </div>
-    </div>
-  <% end %>
+      <div class="modal fade" id="bookingModal<%= booking.id %>" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Your booking on the planet <%= booking.spaceship.planet %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p><strong>Details</strong></p>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <br>
+                <div class="pb-4">
+                  <p><strong>Start date</strong></p>
+                  <%= booking.start_date.strftime("%A %e %m %Y") %>
+                </div>
+                <div class="pb-4">
+                  <p><strong>Return date</strong></p>
+                  <%= booking.end_date.strftime("%A %e %m %Y") %>
+                </div>
+                <div class="pb-4">
+                  <p><strong>Renter</strong></p>
+                  <%= booking.user.email %>
+                </div>
+                <div class="pb-4">
+                  <p><strong>Spaceship Rented</strong></p>
+                  <%= booking.spaceship.name %>
+                </div>
+                <div class="pb-4">
+                  <p><strong>Status</strong></p>
+                  <% if booking.status == "pending" %>
+                    <p>Pending</p>
+                  <% elsif booking.status == "archived" %>
+                    <p>Declined</p>
+                  <% else %>
+                    <p>Accepted</p>
+                  <% end %>
+                </div>
+                <div class="pb-4 text-center">
+                  <p><strong>Total price</strong></p>
+                  <p>$ <%= number_with_delimiter(total_price)%></p>
+                </div>
+              </ul>
+              <br>
+            </div>
+            <div class="modal-footer pb-4 justify-content-center">
+              <%= link_to "Edit booking", edit_booking_path(booking), class: "btn btn-primary rounded-pill" %>
+              <%= link_to "Cancel this booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger rounded-pill text-white" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
