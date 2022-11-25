@@ -16,11 +16,11 @@
 
 
 .card-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 10px;
-  color: black
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 32px;
+  padding: 32px;
+  color: black;
 }
 
 
