@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   get :dashboard, to: "pages#dashboard"
   resources :spaceships do
-    resources :bookings
+    resources :bookings, only: %i[show new create]
   end
-  resources :bookings, only: %i[index]
+  resources :bookings, only: %i[index edit update destroy]
 end

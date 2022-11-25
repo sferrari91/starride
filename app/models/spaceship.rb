@@ -4,6 +4,7 @@ class Spaceship < ApplicationRecord
   validates :description, presence: true
   validates :planet, presence: true
   has_one_attached :photo
+  has_many :bookings
   validates :number_of_passenger, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   include PgSearch::Model
